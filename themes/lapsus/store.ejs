@@ -32,8 +32,8 @@
             <!-- Replace with your content -->
             <div class="lg:flex lg:items-center lg:justify-between mb-8">
               <div class="min-w-0 flex-1">
-                <h2 class="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight" style="color: #e5e7eb;">Store</h2>
-                <p class="text-md font-medium" style="color: #9ca3af;">Purchase extra resources with the coins in your account.</p>
+                <h2 class="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight" style="color: #e5e7eb;">Магазин</h2>
+                <p class="text-md font-medium" style="color: #9ca3af;">Покупайте дополнительные ресурсы за монеты на вашем счету.</p>
               </div>
             </div>
             <% if (req.query.success == "CREATED") { %>
@@ -46,7 +46,7 @@
                     </svg>
                   </div>
                   <div class="ml-3 flex-1 md:flex md:justify-between">
-                    <p class="text-sm text-green-400">The server has successfully been created.</p>
+                    <p class="text-sm text-green-400">Сервер успешно создан.</p>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
                     </svg>
                   </div>
                   <div class="ml-3 flex-1 md:flex md:justify-between">
-                    <p class="text-sm text-green-400">The server has successfully been modified. The changes will appear on the Panel in a few seconds.</p>
+                    <p class="text-sm text-green-400">Сервер успешно изменён. Изменения появятся на панели через несколько секунд.</p>
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                     </svg>
                   </div>
                   <div class="ml-3 flex-1 md:flex md:justify-between">
-                    <p class="text-sm text-green-400">Buy completed!</p>
+                    <p class="text-sm text-green-400">Покупка завершена!</p>
                   </div>
                 </div>
               </div>
@@ -92,7 +92,7 @@
                     </svg>
                   </div>
                   <div class="ml-3 flex-1 md:flex md:justify-between">
-                    <p class="text-sm text-red-400">Insufficient Coins balance!</p>
+                    <p class="text-sm text-red-400">Недостаточно монет!</p>
                   </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@
             <div>
             <dl class="mt-5 grid grid-cols-1 rounded-lg mb-8 overflow-hidden md:grid-cols-3 md:divide-y-0 md:divide-x store-card" style="background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96)); border: 1px solid rgba(148, 163, 184, 0.22); divide-color: rgba(148, 163, 184, 0.22);">
                 <div class="px-4 py-5 sm:p-6">
-                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.ram.per/1024 %>  GiB memory per <%= settings.api.client.coins.store.ram.cost %> coin<%= settings.api.client.coins.store.ram.cost == 1 ? "" : "s" %>.</dt>
+                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.ram.per/1024 %> GiB памяти за <%= settings.api.client.coins.store.ram.cost %> монет<%= settings.api.client.coins.store.ram.cost == 1 ? "у" : "" %>.</dt>
                   <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                             <div class="mt-1 flex rounded-md">
                               <form action="/buyram">
@@ -119,7 +119,7 @@
                                 </select>
                                 <br>
                     <button onclick="buyRAM()"type="submit" class="transition ease-in-out delay-100 group relative flex w-32 justify-center rounded-md border bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none btn-hover btn-active" style="border-color: rgba(191, 219, 254, 0.6);">
-                      Purchase
+                      Купить
                     </button>
                     </form>
                             </div>
@@ -127,7 +127,7 @@
                 </div>
             
                 <div class="px-4 py-5 sm:p-6">
-                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.cpu.per/100 %> CPU cores per <%= settings.api.client.coins.store.cpu.cost %> coin<%= settings.api.client.coins.store.cpu.cost == 1 ? "" : "s" %>.</dt>
+                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.cpu.per/100 %> ядер CPU за <%= settings.api.client.coins.store.cpu.cost %> монет<%= settings.api.client.coins.store.cpu.cost == 1 ? "у" : "" %>.</dt>
                   <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                             <div class="mt-1 flex rounded-md">
                               <form action="/buycpu">
@@ -145,14 +145,14 @@
                                                 </select>
                                                 <br>
                     <button onclick="buyCPU()" type="submit" class="transition ease-in-out delay-100 group relative flex w-32 justify-center rounded-md border bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none btn-hover btn-active" style="border-color: rgba(191, 219, 254, 0.6);">
-                      Purchase
+                      Купить
                     </button>         </form>
                             </div>
                   </dd>
                 </div>
             
                 <div class="px-4 py-5 sm:p-6">
-                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.disk.per/1024 %> GiB storage per <%= settings.api.client.coins.store.disk.cost %> coin<%= settings.api.client.coins.store.disk.cost == 1 ? "" : "s" %>.</dt>
+                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.disk.per/1024 %> GiB диска за <%= settings.api.client.coins.store.disk.cost %> монет<%= settings.api.client.coins.store.disk.cost == 1 ? "у" : "" %>.</dt>
                   <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                             <div class="mt-1 flex rounded-md">
                               <form action="/buydisk">
@@ -170,14 +170,14 @@
                                                 </select>
                                                 <br>                                                          
                     <button onclick="buyDisk()" type="submit" class="transition ease-in-out delay-100 group relative flex w-32 justify-center rounded-md border bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none btn-hover btn-active" style="border-color: rgba(191, 219, 254, 0.6);">
-                      Purchase
+                      Купить
                     </button> </form>                                              
                             </div>   
                   </dd>     
                 </div>    
                 </div>
                 <div class="px-4 py-5 sm:p-6">
-                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.servers.per/1 %>  Server per <%= settings.api.client.coins.store.servers.cost %> coin<%= settings.api.client.coins.store.servers.cost == 1 ? "" : "s" %>.</dt>
+                  <dt class="text-base font-normal" style="color: #9ca3af;"><%= settings.api.client.coins.store.servers.per/1 %> сервер за <%= settings.api.client.coins.store.servers.cost %> монет<%= settings.api.client.coins.store.servers.cost == 1 ? "у" : "" %>.</dt>
                   <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                             <div class="mt-1 flex rounded-md">
                               <form action="/buyservers">
@@ -195,7 +195,7 @@
                                 </select>
                                 <br>
                     <button onclick="buyServers()"type="submit" class="transition ease-in-out delay-100 group relative flex w-32 justify-center rounded-md border bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none btn-hover btn-active" style="border-color: rgba(191, 219, 254, 0.6);">
-                      Purchase
+                      Купить
                     </button>
                     </form>
                             </div>

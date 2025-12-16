@@ -33,7 +33,7 @@
     <div class="relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1 welcome-notification">
         <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
           <p class="text-sm ml-24 leading-6" style="color: #e5e7eb;">
-            Welcome back! You've logged in as <strong class="font-semibold"><%= userinfo.username %>#<%= req.session.userinfo.discriminator %></strong>.
+            С возвращением! Вы вошли как <strong class="font-semibold"><%= userinfo.username %>#<%= req.session.userinfo.discriminator %></strong>.
           </p>
         </div>
         <div class="flex flex-1 justify-end">
@@ -57,26 +57,26 @@
             <span class="inline-block whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-cyan-500 px-3 py-1 text-center align-baseline text-sm font-bold leading-none text-white">20/04/2023</span> <span class="inline-block whitespace-nowrap rounded-md px-3 py-1 text-center align-baseline text-sm leading-none ml-2" style="background: rgba(15, 23, 42, 0.8); color: #9ca3af;">News</span>
         </h2>
         <h2 class="text-xl font-bold mb-2" style="color: #e5e7eb; position: relative; z-index: 1;">
-          Welcome to Lapsus Client!
+          Добро пожаловать в Lapsus Client!
         </h2>
-        <p class="font-medium mb-2" style="color: #9ca3af; position: relative; z-index: 1;">What can I do here?</p>
+        <p class="font-medium mb-2" style="color: #9ca3af; position: relative; z-index: 1;">Что здесь можно делать?</p>
         <ul class="list-disc ml-5 mb-8" style="color: #9ca3af; position: relative; z-index: 1;">
-          <li>Create, edit & delete servers</li>
-          <li>Earn & spend coins to buy resources</li>
-          <li>Reset credentials & manage account</li>
-          <li>More!</li>
+          <li>Создавать, редактировать и удалять серверы</li>
+          <li>Зарабатывать и тратить монеты на ресурсы</li>
+          <li>Сбрасывать пароль и управлять аккаунтом</li>
+          <li>И многое другое!</li>
         </ul>
         <div class="mt-1 grid grid-cols-2 gap-3">
             <div>
                 <% if (req.query.loggedin) { %>
                 <a href="../dashboard?loggedin=true"
                     class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
-                    Dismiss
+                    Закрыть
                 </a>
                 <% } else { %>
                 <a href="../dashboard"
                     class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
-                    Dismiss
+                    Закрыть
                 </a>
                 <% } %>
             </div>
@@ -95,8 +95,8 @@
             <div class="px-4 py-5 border-b rounded-t sm:px-6 edit-form" style="background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96)); border-color: rgba(148, 163, 184, 0.22);">
               <div class="sm:flex sm:items-start sm:justify-between">
                     <div>
-                <h3 class="text-lg leading-6 font-medium" style="color: #e5e7eb;">Edit server</h3>
-                <p class="mt-1 text-sm" style="color: #9ca3af;">Increase your server's resources.</p>
+                <h3 class="text-lg leading-6 font-medium" style="color: #e5e7eb;">Редактировать сервер</h3>
+                <p class="mt-1 text-sm" style="color: #9ca3af;">Измените ресурсы вашего сервера.</p>
                     </div>
                     <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
                       </div>
@@ -136,7 +136,7 @@
         </div>
                     <div class="grid grid-cols-3 gap-6">
                       <div class="col-span-3 sm:col-span-2">
-                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">Memory (GB)</label>
+                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">Память (GB)</label>
                         <div class="mt-1 flex rounded-md shadow-sm">
                           <input type="text" name="company-website" id="ram" class="transition ease-in-out delay-100 block w-full flex-1 rounded-md form-control sm:text-sm" value="<%= serverinfo.attributes.limits.memory/1024 %>">
                         </div>
@@ -145,7 +145,7 @@
         
                     <div class="grid grid-cols-3 gap-6">
                       <div class="col-span-3 sm:col-span-2">
-                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">CPU (Cores)</label>
+                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">CPU (Ядра)</label>
                         <div class="mt-1 flex rounded-md shadow-sm">
                           <input type="text" name="company-website" id="cpu" class="transition ease-in-out delay-100 block w-full flex-1 rounded-md form-control sm:text-sm" value="<%= serverinfo.attributes.limits.cpu/100 %>">
                         </div>
@@ -154,14 +154,14 @@
         
                     <div class="grid grid-cols-3 gap-6">
                       <div class="col-span-3 sm:col-span-2">
-                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">Storage (GB)</label>
+                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">Диск (GB)</label>
                         <div class="mt-1 flex rounded-md shadow-sm">
                           <input type="text" name="company-website" id="disk" class="transition ease-in-out delay-100 block w-full flex-1 rounded-md form-control sm:text-sm" value="<%= serverinfo.attributes.limits.disk/1024 %>">
                         </div>
                       </div>
                     </div><br><br>
                 <button onclick="submitForm()" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none btn-hover btn-active" style="border-color: rgba(191, 219, 254, 0.6);">
-                  Apply Changes
+                  Сохранить изменения
                 </button>
                                                     </div>
                                                     <script>
@@ -173,10 +173,10 @@
                                                         };
                                                     </script>
                                                 <% } else { %>
-                                                    <p style="color: #9ca3af;">Could not find server with the provided ID.</p>
+                                                    <p style="color: #9ca3af;">Сервер с указанным ID не найден.</p>
                                                 <% } %>
                                             <% } else { %>
-                                                <p style="color: #9ca3af;">Missing server ID.</p>
+                                                <p style="color: #9ca3af;">Не указан ID сервера.</p>
                                             <% } %>
         </div>
     

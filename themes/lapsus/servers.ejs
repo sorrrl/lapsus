@@ -42,9 +42,9 @@
 
           <!-- Breadcrumbs -->
           <nav class="breadcrumbs mb-6">
-            <a href="../dashboard">Home</a>
+            <a href="../dashboard">Главная</a>
             <span class="breadcrumbs-separator">/</span>
-            <span class="breadcrumbs-current">Servers</span>
+            <span class="breadcrumbs-current">Серверы</span>
           </nav>
 
           <div class="lg:flex lg:items-center lg:justify-between mb-8">
@@ -55,10 +55,10 @@
                   <svg class="section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
                   </svg>
-                  Servers
+                  Серверы
                 </div>
 
-                <p class="section-subtitle">A list of all of your servers on <%= settings.name %>.</p>
+                <p class="section-subtitle">Список всех ваших серверов на <%= settings.name %>.</p>
 
               </div>
 
@@ -67,7 +67,7 @@
                   <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
                   </svg>
-                  <span>Deploy</span>
+                  <span>Создать</span>
                 </a>
               </div>
 
@@ -79,20 +79,20 @@
                   <svg class="empty-state-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
                   </svg>
-                  <h3 class="empty-state-title">No servers found</h3>
-                  <p class="empty-state-description">You have no servers yet. Deploy your first server to get started!</p>
+                  <h3 class="empty-state-title">Серверы не найдены</h3>
+                  <p class="empty-state-description">У вас пока нет серверов. Создайте свой первый сервер!</p>
                   <div class="quick-actions">
                     <a href="../servers/new" class="quick-action">
                       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
                       </svg>
-                      Deploy Server
+                      Создать сервер
                     </a>
                     <a href="../store" class="quick-action">
                       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                       </svg>
-                      Buy Resources
+                      Купить ресурсы
                     </a>
                   </div>
               </div>
@@ -121,35 +121,35 @@
 
                       <div class="flex items-center gap-3 flex-shrink-0 ml-6">
                           <a id="start<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" onclick="start('<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>')" class="server-action-btn server-action-btn-primary tooltip">
-                            <span class="tooltip-text">Start Server</span>
+                            <span class="tooltip-text">Запустить</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
                             </svg>
                           </a>
 
                           <a id="restart<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" onclick="restart('<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>')" class="server-action-btn server-action-btn-secondary tooltip">
-                            <span class="tooltip-text">Restart Server</span>
+                            <span class="tooltip-text">Перезапустить</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                             </svg>
                           </a>
 
                           <a id="stop<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" onclick="stop('<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>')" class="server-action-btn server-action-btn-secondary tooltip">
-                            <span class="tooltip-text">Stop Server</span>
+                            <span class="tooltip-text">Остановить</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
                             </svg>
                           </a>
 
                           <a href="../edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>" class="server-action-btn server-action-btn-secondary tooltip">
-                            <span class="tooltip-text">Edit Server</span>
+                            <span class="tooltip-text">Редактировать</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                             </svg>
                           </a>
 
                           <a href="#" onclick="event.preventDefault(); document.getElementById('myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>').style.display='block';" class="server-action-btn server-action-btn-danger tooltip">
-                            <span class="tooltip-text">Delete Server</span>
+                            <span class="tooltip-text">Удалить</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                             </svg>
@@ -170,7 +170,7 @@
 
                                     document.getElementById(`start${id}`);
                                     alertify.set('notifier','position', 'bottom-center');
-                                    alertify.success('Server started!');
+                                    alertify.success('Сервер запущен!');
 
                                   } else {
 
@@ -198,7 +198,7 @@
 
                                     document.getElementById(`restart${id}`);
                                     alertify.set('notifier','position', 'bottom-center');
-                                    alertify.success('Server restarted!');
+                                    alertify.success('Сервер перезапущен!');
 
                                   } else {
 
@@ -226,7 +226,7 @@
 
                                     document.getElementById(`stop${id}`);
                                     alertify.set('notifier','position', 'bottom-center');
-                                    alertify.success('Server stopped!');
+                                    alertify.success('Сервер остановлен!');
 
                                   } else {
 
@@ -245,84 +245,6 @@
                         </script>
 
                     </div>
-
-                    <div id="myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" class="modal">
-
-                      <!-- Modal content -->
-
-                      <div class="modal-content">
-
-                          <h2 class="text-xl font-bold mb-2" style="color: #e5e7eb; position: relative; z-index: 1;">
-
-                              Are you sure you want to delete your server?
-
-                          </h2>
-
-                          <p class="font-medium mb-2" style="color: #9ca3af; position: relative; z-index: 1;">Once you continue:</p>
-
-                          <ul class="list-disc ml-5 mb-8" style="color: #9ca3af; position: relative; z-index: 1;">
-
-                              <li>Server data will be permanently deleted</li>
-
-                              <li>The server will be removed from the client area & panel</li>
-
-                              <li>Resources will be returned to your account</li>
-
-                          </ul>
-
-                          <div class="mt-1 grid grid-cols-2 gap-3">
-
-                            <div>
-
-                                <a href="../delete?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>"
-
-                                    class="cursor-pointer w-full inline-flex justify-center py-2 px-4 rounded-md shadow-sm bg-black-500 text-sm font-medium text-white hover:bg-gray-700 transition btn-hover btn-active" style="position: relative; z-index: 1;">
-
-                                    Continue
-
-                                </a>
-
-                            </div>
-
-                            <div>
-
-                                <a
-
-                                    class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
-
-                                    Cancel
-
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                      </div>
-
-                  </div>
-
-                  <script>
-                    (function() {
-                      var modalId = "myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>";
-                      var modal = document.getElementById(modalId);
-                      var closeBtn = modal ? modal.querySelector(".close") : null;
-
-                      if (closeBtn) {
-                        closeBtn.onclick = function() {
-                          if (modal) modal.style.display = "none";
-                        };
-                      }
-
-                      if (modal) {
-                        window.addEventListener('click', function(event) {
-                          if (event.target == modal) {
-                            modal.style.display = "none";
-                          }
-                        });
-                      }
-                    })();
-                  </script>
 
                   <div class="mt-6 grid grid-cols-3 gap-5">
 
@@ -347,7 +269,7 @@
                               <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                             </svg>
                           </div>
-                          <div class="server-resource-label">Memory</div>
+                          <div class="server-resource-label">Память</div>
                         </div>
                         <div class="server-resource-value"><%= (pterodactyl.relationships.servers.data[i].attributes.limits.memory/1024).toFixed(2) %> GiB</div>
                       </div>
@@ -359,7 +281,7 @@
                               <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
                             </svg>
                           </div>
-                          <div class="server-resource-label">Storage</div>
+                          <div class="server-resource-label">Диск</div>
                         </div>
                         <div class="server-resource-value"><%= (pterodactyl.relationships.servers.data[i].attributes.limits.disk/1024).toFixed(2) %> GiB</div>
                       </div>
@@ -372,6 +294,55 @@
 
                 </dl>
 
+                <!-- Модальные окна удаления серверов -->
+                <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+                <div id="myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" class="modal">
+                  <div class="modal-content">
+                    <h2 class="text-xl font-bold mb-2" style="color: #e5e7eb; position: relative; z-index: 1;">
+                      Вы уверены, что хотите удалить сервер?
+                    </h2>
+                    <p class="font-medium mb-2" style="color: #9ca3af; position: relative; z-index: 1;">После продолжения:</p>
+                    <ul class="list-disc ml-5 mb-8" style="color: #9ca3af; position: relative; z-index: 1;">
+                      <li>Данные сервера будут безвозвратно удалены</li>
+                      <li>Сервер будет удалён из панели управления</li>
+                      <li>Ресурсы вернутся на ваш аккаунт</li>
+                    </ul>
+                    <div class="mt-1 grid grid-cols-2 gap-3">
+                      <div>
+                        <a href="../delete?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>"
+                          class="cursor-pointer w-full inline-flex justify-center py-2 px-4 rounded-md shadow-sm bg-black-500 text-sm font-medium text-white hover:bg-gray-700 transition btn-hover btn-active" style="position: relative; z-index: 1;">
+                          Продолжить
+                        </a>
+                      </div>
+                      <div>
+                        <a class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-pointer btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
+                          Отмена
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <script>
+                  (function() {
+                    var modalId = "myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>";
+                    var modal = document.getElementById(modalId);
+                    var closeBtn = modal ? modal.querySelector(".close") : null;
+                    if (closeBtn) {
+                      closeBtn.onclick = function() {
+                        if (modal) modal.style.display = "none";
+                      };
+                    }
+                    if (modal) {
+                      window.addEventListener('click', function(event) {
+                        if (event.target == modal) {
+                          modal.style.display = "none";
+                        }
+                      });
+                    }
+                  })();
+                </script>
+                <% } %>
+
               <% } %>
 
               <% if (pterodactyl.relationships.servers.data.length == 1) { %>
@@ -380,7 +351,7 @@
 
                       <div class="flex flex-col items-center justify-center h-full">
 
-                          <p class="text-center text-1xl font-medium" style="color: #9ca3af;">Nothing here yet...</p>                            
+                          <p class="text-center text-1xl font-medium" style="color: #9ca3af;">Пока ничего нет...</p>                            
 
                       </div>
 

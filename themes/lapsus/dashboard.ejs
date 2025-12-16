@@ -356,7 +356,7 @@
   <div class="relative isolate flex items-center gap-x-6 overflow-hidden welcome-notification px-6 py-3 sm:px-3.5 sm:before:flex-1 animate__animated animate__fadeInDown mx-4 mt-4 md:ml-52 md:mr-4">
       <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
         <p class="text-sm leading-6">
-          Welcome back 👋! You've logged in as <strong class="font-semibold">@<%= userinfo.username %></strong>
+          С возвращением 👋! Вы вошли как <strong class="font-semibold">@<%= userinfo.username %></strong>
         </p>
       </div>
       <div class="flex flex-1 justify-end">
@@ -380,26 +380,26 @@
           <span class="inline-block whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-cyan-500 px-3 py-1 text-center align-baseline text-sm font-bold leading-none text-white">Lapsus Client</span> <span class="inline-block whitespace-nowrap rounded-md bg-gray-700 px-3 py-1 text-center align-baseline text-sm leading-none text-gray-300 ml-2">News</span>
       </h2>
       <h2 class="text-xl font-bold mb-2" style="position: relative; z-index: 1;">
-          Welcome to Lapsus Client!
+          Добро пожаловать в Lapsus Client!
       </h2>
-      <p class="font-medium mb-4" style="position: relative; z-index: 1;">What can I do here?</p>
+      <p class="font-medium mb-4" style="position: relative; z-index: 1;">Что здесь можно делать?</p>
       <ul class="list-disc ml-5 mb-8" style="position: relative; z-index: 1;">
-          <li>Create, edit & delete servers</li>
-          <li>Earn & spend coins to buy resources</li>
-          <li>Reset credentials & manage account</li>
-          <li>More!</li>
+          <li>Создавать, редактировать и удалять серверы</li>
+          <li>Зарабатывать и тратить монеты на ресурсы</li>
+          <li>Сбрасывать пароль и управлять аккаунтом</li>
+          <li>И многое другое!</li>
       </ul>
       <div class="mt-1 grid grid-cols-2 gap-3" style="position: relative; z-index: 1;">
           <div>
               <% if (req.query.loggedin) { %>
               <a href="../dashboard?loggedin=true"
                   class="close w-full inline-flex justify-center py-2 px-4 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-sm font-medium text-gray-300 hover:bg-gray-700 btn-hover btn-active">
-                  Close
+                  Закрыть
               </a>
               <% } else { %>
               <a href="../dashboard"
                   class="close w-full inline-flex justify-center py-2 px-4 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-sm font-medium text-gray-300 hover:bg-gray-700 btn-hover btn-active">
-                  Dismiss
+                  Закрыть
               </a>
               <% } %>
           </div>
@@ -416,9 +416,9 @@
           <!-- This example requires Tailwind CSS v2.0+ -->
                   <!-- Breadcrumbs -->
                   <nav class="breadcrumbs mb-4">
-                    <a href="../dashboard">Home</a>
+                    <a href="../dashboard">Главная</a>
                     <span class="breadcrumbs-separator">/</span>
-                    <span class="breadcrumbs-current">Dashboard</span>
+                    <span class="breadcrumbs-current">Панель управления</span>
                   </nav>
 
                   <div class="mb-4 animate__animated animate__fadeIn">
@@ -427,9 +427,9 @@
                         <svg class="section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
                         </svg>
-                        Dashboard
+                        Панель управления
                       </div>
-                      <p class="section-subtitle">Resources, news & recommendations all in one place.</p>
+                      <p class="section-subtitle">Ресурсы, новости и рекомендации в одном месте.</p>
                     </div>
           
   <%
@@ -454,7 +454,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-16.5 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" />
                   </svg>
                 </div>
-                <div class="stat-label">CPU Cores</div>
+                <div class="stat-label">Ядра CPU</div>
               </div>
               <div class="stat-value"><% let cpuVal = packages.cpu/100 + extraresources.cpu/100 - cpu/100; %><%= cpuVal %></div>
             </div>
@@ -463,14 +463,14 @@
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 10.293a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
-              Unavailable
+              Недоступно
             </div>
             <% } else { %>
             <div class="stat-change stat-change-positive">
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
-              Available
+              Доступно
             </div>
             <% } %>
           </div>
@@ -483,7 +483,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                   </svg>
                 </div>
-                <div class="stat-label">Memory (GiB)</div>
+                <div class="stat-label">Память (GiB)</div>
               </div>
               <div class="stat-value"><% let ramVal = packages.ram/1024 + extraresources.ram/1024 - ram/1024; %><%= ramVal %></div>
             </div>
@@ -492,14 +492,14 @@
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 10.293a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
-              Unavailable
+              Недоступно
             </div>
             <% } else { %>
             <div class="stat-change stat-change-positive">
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
-              Available
+              Доступно
             </div>
             <% } %>
           </div>
@@ -512,7 +512,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
                   </svg>
                 </div>
-                <div class="stat-label">Storage (GiB)</div>
+                <div class="stat-label">Хранилище (GiB)</div>
               </div>
               <div class="stat-value"><% let diskVal = packages.disk/1024 + extraresources.disk/1024 - disk/1024; %><%= diskVal %></div>
             </div>
@@ -521,14 +521,14 @@
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 10.293a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
-              Unavailable
+              Недоступно
             </div>
             <% } else { %>
             <div class="stat-change stat-change-positive">
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
-              Available
+              Доступно
             </div>
             <% } %>
           </div>
@@ -541,7 +541,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m-8 8.5V21" />
                   </svg>
                 </div>
-                <div class="stat-label">Databases</div>
+                <div class="stat-label">Базы данных</div>
               </div>
               <div class="stat-value"><% let dbVal = packages.databases; %><%= dbVal %></div>
             </div>
@@ -550,14 +550,14 @@
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 10.293a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
-              Unavailable
+              Недоступно
             </div>
             <% } else { %>
             <div class="stat-change stat-change-positive">
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
-              Available
+              Доступно
             </div>
             <% } %>
           </div>
@@ -570,7 +570,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008V17.25zm-2.25-8.25v.008h-.008V9h.008z" />
                   </svg>
                 </div>
-                <div class="stat-label">Servers</div>
+                <div class="stat-label">Серверы</div>
               </div>
               <div class="stat-value"><% let serversVal = packages.servers + extraresources.servers/1 - servers/1; %><%= serversVal %></div>
             </div>
@@ -579,14 +579,14 @@
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 10.293a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
-              Unavailable
+              Недоступно
             </div>
             <% } else { %>
             <div class="stat-change stat-change-positive">
               <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
-              Available
+              Доступно
             </div>
             <% } %>
           </div>
@@ -603,16 +603,16 @@
                 </svg>
               </div>
               <div class="flex-1">
-                <h2 class="text-3xl font-bold leading-tight mb-2" style="color: #ffffff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 70, 229, 0.3);">Deploy a new server</h2>
-                <p class="text-base font-medium mb-4" style="color: #e0e7ff; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);">It only takes a few moments to get started.</p>
+                <h2 class="text-3xl font-bold leading-tight mb-2" style="color: #ffffff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 70, 229, 0.3);">Создать новый сервер</h2>
+                <p class="text-base font-medium mb-4" style="color: #e0e7ff; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);">Это займёт всего несколько секунд.</p>
                 <div class="flex flex-wrap gap-2.5">
                   <span class="deploy-badge deploy-badge-info">
                     <span class="deploy-badge-dot"></span>
-                    Quick Setup
+                    Быстрая настройка
                   </span>
                   <span class="deploy-badge deploy-badge-success">
                     <span class="deploy-badge-dot"></span>
-                    Instant Deploy
+                    Мгновенный запуск
                   </span>
                 </div>
               </div>
@@ -623,7 +623,7 @@
               <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
               </svg>
-              <span>Deploy Now</span>                                
+              <span>Создать</span>                                
             </a>
           </div>
         </div>
