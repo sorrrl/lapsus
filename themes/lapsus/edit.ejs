@@ -1,0 +1,191 @@
+<head>
+    <title><%= settings.name %></title>
+    <link rel="icon" type="image/png" href="<%= settings.logo.url %>">
+    <link rel="stylesheet" href="../assets/tailwind.css">
+    <link rel="stylesheet" href="../assets/css/modern-theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+
+    <% if (settings.music == true) { %>
+      <!-- Music Player -->
+      <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+    <div class="elfsight-app-9c8f4667-f5ce-46b9-99e2-f32095e11518" data-elfsight-app-lazy></div>
+      <% } %>
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+</style>
+
+<body style="font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 55%), radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 55%), radial-gradient(circle at bottom, rgba(15, 23, 42, 0.95), #020617 70%);">
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('page-loaded');
+  });
+</script>
+    <% if (req.query.loggedin) { %>
+    <div class="relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1 welcome-notification">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <p class="text-sm ml-24 leading-6" style="color: #e5e7eb;">
+            Welcome back! You've logged in as <strong class="font-semibold"><%= userinfo.username %>#<%= req.session.userinfo.discriminator %></strong>.
+          </p>
+        </div>
+        <div class="flex flex-1 justify-end">
+          <a href="../dashboard" type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]">
+            <span class="sr-only">Dismiss</span>
+            <svg class="h-5 w-5 close-btn" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="color: #9ca3af;">
+              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    <% } %>
+<div>
+<!-- The Modal -->
+<% if (req.query.news) { %>
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <h2 class="text-xl font-bold mb-4" style="color: #e5e7eb; position: relative; z-index: 1;">
+            <span class="inline-block whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-cyan-500 px-3 py-1 text-center align-baseline text-sm font-bold leading-none text-white">20/04/2023</span> <span class="inline-block whitespace-nowrap rounded-md px-3 py-1 text-center align-baseline text-sm leading-none ml-2" style="background: rgba(15, 23, 42, 0.8); color: #9ca3af;">News</span>
+        </h2>
+        <h2 class="text-xl font-bold mb-2" style="color: #e5e7eb; position: relative; z-index: 1;">
+          Welcome to Lapsus Client!
+        </h2>
+        <p class="font-medium mb-2" style="color: #9ca3af; position: relative; z-index: 1;">What can I do here?</p>
+        <ul class="list-disc ml-5 mb-8" style="color: #9ca3af; position: relative; z-index: 1;">
+          <li>Create, edit & delete servers</li>
+          <li>Earn & spend coins to buy resources</li>
+          <li>Reset credentials & manage account</li>
+          <li>More!</li>
+        </ul>
+        <div class="mt-1 grid grid-cols-2 gap-3">
+            <div>
+                <% if (req.query.loggedin) { %>
+                <a href="../dashboard?loggedin=true"
+                    class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
+                    Dismiss
+                </a>
+                <% } else { %>
+                <a href="../dashboard"
+                    class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
+                    Dismiss
+                </a>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+</div>
+<% } %>
+    <%- include('components/navigation') %>
+    <div class="md:pl-52 flex flex-col flex-1 min-h-screen">
+    <main class="flex-1">
+      <div class="py-6">
+        <div class="max-w-7xl pt-8 mx-auto px-4 sm:px-6 md:px-8">
+            <!-- Replace with your content -->
+            <!-- This example requires Tailwind CSS v2.0+ -->
+            <div class="px-4 py-5 border-b rounded-t sm:px-6 edit-form" style="background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96)); border-color: rgba(148, 163, 184, 0.22);">
+              <div class="sm:flex sm:items-start sm:justify-between">
+                    <div>
+                <h3 class="text-lg leading-6 font-medium" style="color: #e5e7eb;">Edit server</h3>
+                <p class="mt-1 text-sm" style="color: #9ca3af;">Increase your server's resources.</p>
+                    </div>
+                    <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
+                      </div>
+                  </div>
+              </div>
+              <div class="rounded-lg text-sm edit-form" style="background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96)); border: 1px solid rgba(148, 163, 184, 0.22); color: #9ca3af;">
+                <%
+                    let ram = 0;
+                    let disk = 0;
+                    let cpu = 0;
+                    let servers = pterodactyl.relationships.servers.data.length;
+                    for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) {
+                        ram = ram + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.memory == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0);
+                        disk = disk + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.disk == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0);
+                        cpu = cpu + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.cpu == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0);
+                    }
+                %>
+                                            <% if (req.query.id) { %>
+                                                <% if (pterodactyl.relationships.servers.data.filter(name => name.attributes.id == req.query.id).length == 1) {
+                                                    let serverinfo = pterodactyl.relationships.servers.data.filter(name => name.attributes.id == req.query.id)[0];
+                                                    let attemptegg = null;
+                                                    let attemptname = null;
+                                                    for (let [name, value] of Object.entries(settings.api.client.eggs)) {
+                                                        if (settings.api.client.eggs[name].info.egg == serverinfo.attributes.egg) {
+                                                            attemptegg = settings.api.client.eggs[name];
+                                                            attemptname = name;
+                                                        };
+                                                    };
+                                                    let egginfo = attemptegg ? attemptegg.display : "???";
+                                                %>
+        <div class="rounded-md bg-sky-800 p-4 mb-8">
+          <div class="flex">
+            <div class="flex-shrink-0">
+             
+            
+          </div>
+        </div>
+                    <div class="grid grid-cols-3 gap-6">
+                      <div class="col-span-3 sm:col-span-2">
+                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">Memory (GB)</label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="text" name="company-website" id="ram" class="transition ease-in-out delay-100 block w-full flex-1 rounded-md form-control sm:text-sm" value="<%= serverinfo.attributes.limits.memory/1024 %>">
+                        </div>
+                      </div>
+                    </div><br>
+        
+                    <div class="grid grid-cols-3 gap-6">
+                      <div class="col-span-3 sm:col-span-2">
+                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">CPU (Cores)</label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="text" name="company-website" id="cpu" class="transition ease-in-out delay-100 block w-full flex-1 rounded-md form-control sm:text-sm" value="<%= serverinfo.attributes.limits.cpu/100 %>">
+                        </div>
+                      </div>
+                    </div><br>
+        
+                    <div class="grid grid-cols-3 gap-6">
+                      <div class="col-span-3 sm:col-span-2">
+                        <label for="company-website" class="block text-sm font-medium" style="color: #e5e7eb;">Storage (GB)</label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="text" name="company-website" id="disk" class="transition ease-in-out delay-100 block w-full flex-1 rounded-md form-control sm:text-sm" value="<%= serverinfo.attributes.limits.disk/1024 %>">
+                        </div>
+                      </div>
+                    </div><br><br>
+                <button onclick="submitForm()" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none btn-hover btn-active" style="border-color: rgba(191, 219, 254, 0.6);">
+                  Apply Changes
+                </button>
+                                                    </div>
+                                                    <script>
+                                                        async function submitForm() {
+                                                            let ram = encodeURIComponent(document.getElementById("ram").value);
+                                                            let disk = encodeURIComponent(document.getElementById("disk").value);
+                                                            let cpu = encodeURIComponent(document.getElementById("cpu").value);
+                                                            document.location.href = `/modify?id=<%= req.query.id %>&ram=${ram*1024}&disk=${disk*1024}&cpu=${cpu*100}`;
+                                                        };
+                                                    </script>
+                                                <% } else { %>
+                                                    <p style="color: #9ca3af;">Could not find server with the provided ID.</p>
+                                                <% } %>
+                                            <% } else { %>
+                                                <p style="color: #9ca3af;">Missing server ID.</p>
+                                            <% } %>
+        </div>
+    
+
+  
+            <!-- /End replace -->
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>

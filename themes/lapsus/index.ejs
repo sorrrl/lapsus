@@ -1,0 +1,503 @@
+<head>
+    <title><%= settings.name %></title>
+    <link rel="icon" type="image/png" href="<%= settings.logo.url %>">
+    <link rel="stylesheet" href="../assets/tailwind.css">
+    <link rel="stylesheet" href="../assets/css/modern-theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 1rem;
+    }
+
+    .login-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15), transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(34, 211, 238, 0.12), transparent 50%);
+        pointer-events: none;
+    }
+
+    .login-card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 480px;
+        padding: 3rem 2.5rem;
+        background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 26px;
+        box-shadow: 
+            0 26px 80px rgba(15, 23, 42, 0.95),
+            0 0 0 1px rgba(148, 163, 184, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .login-card::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background:
+            radial-gradient(circle at top left, rgba(79, 70, 229, 0.3), transparent 55%),
+            radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.2), transparent 55%);
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .login-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .login-logo img {
+        height: 64px;
+        width: auto;
+        filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.4));
+    }
+
+    .login-title {
+        text-align: center;
+        margin-bottom: 0.5rem;
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #e5e7eb, #9ca3af);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .login-subtitle {
+        text-align: center;
+        color: #9ca3af;
+        font-size: 0.95rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .login-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .login-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 14px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        overflow: hidden;
+        text-decoration: none;
+    }
+
+    .login-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(34, 211, 238, 0.15));
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .login-btn:hover::before {
+        opacity: 1;
+    }
+
+    .login-btn-discord {
+        background: linear-gradient(135deg, #5865F2, #4752C4);
+        color: #ffffff;
+        border-color: rgba(88, 101, 242, 0.5);
+        box-shadow: 0 8px 24px rgba(88, 101, 242, 0.3);
+    }
+
+    .login-btn-discord:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(88, 101, 242, 0.4);
+        border-color: rgba(88, 101, 242, 0.8);
+    }
+
+    .login-btn-google {
+        background: linear-gradient(to bottom right, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+        color: #9ca3af;
+        border-color: rgba(148, 163, 184, 0.3);
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.5);
+    }
+
+    .login-btn-google:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(to bottom right, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+        color: #e5e7eb;
+        border-color: rgba(148, 163, 184, 0.5);
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.6);
+    }
+
+    .login-btn-google:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .login-btn svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.75rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .login-btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .login-features {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .login-features-title {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #9ca3af;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .login-features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .login-feature {
+        font-size: 0.75rem;
+        color: #9ca3af;
+    }
+
+    .login-feature-icon {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0.5rem;
+        background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.2), rgba(34, 211, 238, 0.15));
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .tooltip {
+        background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.95));
+        color: #e5e7eb;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.8);
+    }
+
+    .tooltip.show {
+        opacity: 1;
+    }
+
+    .tooltip-arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        position: absolute;
+    }
+
+    .tooltip-arrow[data-popper-placement^='top'] {
+        border-width: 6px 6px 0 6px;
+        border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -6px;
+    }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .modal-content {
+        background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+        margin: auto;
+        padding: 2.5rem;
+        border-radius: 26px;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        box-shadow: 0 26px 80px rgba(15, 23, 42, 0.95);
+        color: #e5e7eb;
+        max-width: 480px;
+        margin-top: 10%;
+        position: relative;
+    }
+
+    .modal-content::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background:
+            radial-gradient(circle at top left, rgba(79, 70, 229, 0.3), transparent 55%),
+            radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.2), transparent 55%);
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .modal-content h2 {
+        color: #e5e7eb;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .modal-content p,
+    .modal-content li {
+        color: #9ca3af;
+        position: relative;
+        z-index: 1;
+    }
+
+    .modal-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .modal-btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 14px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border: 1px solid transparent;
+        position: relative;
+        z-index: 1;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .modal-btn-primary {
+        background: radial-gradient(circle at top left, #4f46e5, #22d3ee);
+        color: #f9fafb;
+        border-color: rgba(191, 219, 254, 0.6);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .modal-btn-primary:hover {
+        box-shadow: 0 12px 32px rgba(37, 99, 235, 0.5);
+        transform: translateY(-1px);
+    }
+
+    .modal-btn-secondary {
+        background: rgba(30, 41, 59, 0.8);
+        color: #9ca3af;
+        border-color: rgba(148, 163, 184, 0.3);
+    }
+
+    .modal-btn-secondary:hover {
+        background: rgba(30, 41, 59, 0.95);
+        color: #e5e7eb;
+        border-color: rgba(148, 163, 184, 0.5);
+    }
+
+    @media (max-width: 640px) {
+        .login-card {
+            padding: 2rem 1.5rem;
+            margin: 1rem;
+        }
+
+        .login-title {
+            font-size: 1.75rem;
+        }
+
+        .login-features-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+</style>
+<body class="h-full" style="font-family: 'Inter'; background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 55%), radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 55%), radial-gradient(circle at bottom, rgba(15, 23, 42, 0.95), #020617 70%);">
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('page-loaded');
+  });
+</script>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-logo">
+                <img src="<%= settings.logo.url %>" alt="Logo">
+            </div>
+            
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Sign in to continue to <%= settings.name %></p>
+
+            <div class="login-buttons">
+                <a id="myBtn" class="login-btn login-btn-discord">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" fill="currentColor">
+                        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+                    </svg>
+                    <span>Continue with Discord</span>
+                </a>
+
+                <a id="comingsoon" class="login-btn login-btn-google">
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M12.037 21.998a10.313 10.313 0 0 1-7.168-3.049 9.888 9.888 0 0 1-2.868-7.118 9.947 9.947 0 0 1 3.064-6.949A10.37 10.37 0 0 1 12.212 2h.176a9.935 9.935 0 0 1 6.614 2.564L16.457 6.88a6.187 6.187 0 0 0-4.131-1.566 6.9 6.9 0 0 0-4.794 1.913 6.618 6.618 0 0 0-2.045 4.657 6.608 6.608 0 0 0 1.882 4.723 6.891 6.891 0 0 0 4.725 2.07h.143c1.41.072 2.8-.354 3.917-1.2a5.77 5.77 0 0 0 2.172-3.41l.043-.117H12.22v-3.41h9.678c.075.617.109 1.238.1 1.859-.099 5.741-4.017 9.6-9.746 9.6l-.215-.002Z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Continue with Google</span>
+                </a>
+            </div>
+
+            <div class="login-features">
+                <div class="login-features-title">Why choose us?</div>
+                <div class="login-features-grid">
+                    <div class="login-feature">
+                        <div class="login-feature-icon">⚡</div>
+                        <div>Fast Setup</div>
+                    </div>
+                    <div class="login-feature">
+                        <div class="login-feature-icon">🔒</div>
+                        <div>Secure</div>
+                    </div>
+                    <div class="login-feature">
+                        <div class="login-feature-icon">🚀</div>
+                        <div>Reliable</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <h2>One more thing</h2>
+                <p style="margin-bottom: 1rem;">Please confirm that you allow us to:</p>
+                <ul style="list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #9ca3af;">
+                    <li>Automatically join you to our Discord server</li>
+                    <li>Access your email address, username & avatar</li>
+                </ul>
+                <div class="modal-buttons">
+                    <a href="../login" class="modal-btn modal-btn-primary">
+                        Continue
+                    </a>
+                    <a class="close modal-btn modal-btn-secondary">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tooltip" role="tooltip" id="tooltip">
+            <div class="tooltip-arrow" data-popper-variation="1"></div>
+            <div class="tooltip-inner">
+                Coming soon. We're working on this.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        // Initialize the Popper.js tooltip
+        const tooltip = document.getElementById('tooltip');
+        const button = document.getElementById('comingsoon');
+        const popperInstance = Popper.createPopper(button, tooltip, {
+            placement: 'top',
+            modifiers: [{
+                    name: 'offset',
+                    options: {
+                        offset: [0, 10],
+                    },
+                },
+                {
+                    name: 'arrow',
+                    options: {
+                        element: '.tooltip-arrow',
+                    },
+                },
+            ],
+        });
+
+        // Show/hide the tooltip when the button is hovered
+        button.addEventListener('mouseenter', function () {
+            tooltip.classList.add('show');
+            popperInstance.update();
+        });
+
+        button.addEventListener('mouseleave', function () {
+            tooltip.classList.remove('show');
+        });
+    </script>
+</body>

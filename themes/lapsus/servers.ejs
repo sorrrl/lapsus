@@ -1,0 +1,404 @@
+<head>
+  <title><%= settings.name %></title>
+  <link rel="icon" type="image/png" href="<%= settings.logo.url %>">
+  <link rel="stylesheet" href="../assets/tailwind.css">
+  <link rel="stylesheet" href="../assets/css/modern-theme.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://unpkg.com/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+
+  <% if (settings.music == true) { %>
+    <!-- Music Player -->
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+  <div class="elfsight-app-9c8f4667-f5ce-46b9-99e2-f32095e11518" data-elfsight-app-lazy></div>
+    <% } %>
+
+  <!-- Inter font -->
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 55%), radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 55%), radial-gradient(circle at bottom, rgba(15, 23, 42, 0.95), #020617 70%);">
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('page-loaded');
+  });
+</script>
+
+  <%- include('components/navigation') %>
+
+  <div class="md:pl-52 flex flex-col flex-1 min-h-screen">
+
+    <main class="flex-1">
+
+      <div class="py-6">
+
+        <div class="max-w-7xl pt-8 mx-auto px-4 sm:px-6 md:px-8">
+
+          <!-- Replace with your content -->
+
+          <!-- This example requires Tailwind CSS v2.0+ -->
+
+          <!-- Breadcrumbs -->
+          <nav class="breadcrumbs mb-6">
+            <a href="../dashboard">Home</a>
+            <span class="breadcrumbs-separator">/</span>
+            <span class="breadcrumbs-current">Servers</span>
+          </nav>
+
+          <div class="lg:flex lg:items-center lg:justify-between mb-8">
+
+              <div class="min-w-0 flex-1 section-header">
+
+                <div class="section-title">
+                  <svg class="section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
+                  </svg>
+                  Servers
+                </div>
+
+                <p class="section-subtitle">A list of all of your servers on <%= settings.name %>.</p>
+
+              </div>
+
+              <div class="mt-5 flex lg:ml-4 lg:mt-0">
+                <a href="../servers/new" type="button" class="action-button action-button-primary floating-btn btn-hover btn-active">
+                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                  </svg>
+                  <span>Deploy</span>
+                </a>
+              </div>
+
+            </div>
+
+          <% if (pterodactyl.relationships.servers.data.length == 0) { %>
+
+              <div class="empty-state-enhanced mt-8">
+                  <svg class="empty-state-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
+                  </svg>
+                  <h3 class="empty-state-title">No servers found</h3>
+                  <p class="empty-state-description">You have no servers yet. Deploy your first server to get started!</p>
+                  <div class="quick-actions">
+                    <a href="../servers/new" class="quick-action">
+                      <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                      </svg>
+                      Deploy Server
+                    </a>
+                    <a href="../store" class="quick-action">
+                      <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                      </svg>
+                      Buy Resources
+                    </a>
+                  </div>
+              </div>
+
+              <% } else { %>
+
+
+                <dl class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+
+                <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>    
+                  
+
+                 <div class="server-card-enhanced" style="position: relative;">
+
+                  <div class="flex items-center justify-between mb-6">
+
+                      <div class="flex items-center gap-4 flex-1 min-w-0">
+                        <div class="server-icon-enhanced flex-shrink-0">
+                          <%= pterodactyl.relationships.servers.data[i].attributes.name.charAt(0).toUpperCase() %>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                          <h2 class="server-name-enhanced"><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 30 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 30) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></h2>
+                          <p class="server-id-enhanced">ID: <%= pterodactyl.relationships.servers.data[i].attributes.identifier %></p>
+                        </div>
+                      </div>
+
+                      <div class="flex items-center gap-3 flex-shrink-0 ml-6">
+                          <a id="start<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" onclick="start('<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>')" class="server-action-btn server-action-btn-primary tooltip">
+                            <span class="tooltip-text">Start Server</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
+                            </svg>
+                          </a>
+
+                          <a id="restart<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" onclick="restart('<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>')" class="server-action-btn server-action-btn-secondary tooltip">
+                            <span class="tooltip-text">Restart Server</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                            </svg>
+                          </a>
+
+                          <a id="stop<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" onclick="stop('<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>')" class="server-action-btn server-action-btn-secondary tooltip">
+                            <span class="tooltip-text">Stop Server</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
+                            </svg>
+                          </a>
+
+                          <a href="../edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>" class="server-action-btn server-action-btn-secondary tooltip">
+                            <span class="tooltip-text">Edit Server</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                            </svg>
+                          </a>
+
+                          <a href="#" onclick="event.preventDefault(); document.getElementById('myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>').style.display='block';" class="server-action-btn server-action-btn-danger tooltip">
+                            <span class="tooltip-text">Delete Server</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                          </a>
+                        </div>
+
+                        <script>
+
+                              async function start(id) {
+
+                                try {
+
+                                  let response = await fetch(`/api/servers/start?id=${id}&user=<%= userinfo.id %>`);
+
+                                  const data = await response.json();
+
+                                  if (data.success == true) {
+
+                                    document.getElementById(`start${id}`);
+                                    alertify.set('notifier','position', 'bottom-center');
+                                    alertify.success('Server started!');
+
+                                  } else {
+
+                                    console.error("Failed to start server:", data.message);
+
+                                  }
+
+                                } catch (error) {
+
+                                  console.error("Error during server start request:", error);
+
+                                }
+
+                              }
+
+                              async function restart(id) {
+
+                                try {
+
+                                  let response = await fetch(`/api/servers/restart?id=${id}&user=<%= userinfo.id %>`);
+
+                                  const data = await response.json();
+
+                                  if (data.success == true) {
+
+                                    document.getElementById(`restart${id}`);
+                                    alertify.set('notifier','position', 'bottom-center');
+                                    alertify.success('Server restarted!');
+
+                                  } else {
+
+                                    console.error("Failed to start server:", data.message);
+
+                                  }
+
+                                } catch (error) {
+
+                                  console.error("Error during server start request:", error);
+
+                                }
+
+                              }
+
+                              async function stop(id) {
+
+                                try {
+
+                                  let response = await fetch(`/api/servers/stop?id=${id}&user=<%= userinfo.id %>`)
+
+                                  const data = await response.json()
+
+                                  if (data.success == true) {
+
+                                    document.getElementById(`stop${id}`);
+                                    alertify.set('notifier','position', 'bottom-center');
+                                    alertify.success('Server stopped!');
+
+                                  } else {
+
+                                    console.error("Failed to stop server:", data.message);
+
+                                  }
+
+                                } catch (error) {
+
+                                  console.error("Error during server start request:", error);
+
+                                }
+
+                              }
+
+                        </script>
+
+                    </div>
+
+                    <div id="myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" class="modal">
+
+                      <!-- Modal content -->
+
+                      <div class="modal-content">
+
+                          <h2 class="text-xl font-bold mb-2" style="color: #e5e7eb; position: relative; z-index: 1;">
+
+                              Are you sure you want to delete your server?
+
+                          </h2>
+
+                          <p class="font-medium mb-2" style="color: #9ca3af; position: relative; z-index: 1;">Once you continue:</p>
+
+                          <ul class="list-disc ml-5 mb-8" style="color: #9ca3af; position: relative; z-index: 1;">
+
+                              <li>Server data will be permanently deleted</li>
+
+                              <li>The server will be removed from the client area & panel</li>
+
+                              <li>Resources will be returned to your account</li>
+
+                          </ul>
+
+                          <div class="mt-1 grid grid-cols-2 gap-3">
+
+                            <div>
+
+                                <a href="../delete?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>"
+
+                                    class="cursor-pointer w-full inline-flex justify-center py-2 px-4 rounded-md shadow-sm bg-black-500 text-sm font-medium text-white hover:bg-gray-700 transition btn-hover btn-active" style="position: relative; z-index: 1;">
+
+                                    Continue
+
+                                </a>
+
+                            </div>
+
+                            <div>
+
+                                <a
+
+                                    class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
+
+                                    Cancel
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                      </div>
+
+                  </div>
+
+                  <script>
+                    (function() {
+                      var modalId = "myModal<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>";
+                      var modal = document.getElementById(modalId);
+                      var closeBtn = modal ? modal.querySelector(".close") : null;
+
+                      if (closeBtn) {
+                        closeBtn.onclick = function() {
+                          if (modal) modal.style.display = "none";
+                        };
+                      }
+
+                      if (modal) {
+                        window.addEventListener('click', function(event) {
+                          if (event.target == modal) {
+                            modal.style.display = "none";
+                          }
+                        });
+                      }
+                    })();
+                  </script>
+
+                  <div class="mt-6 grid grid-cols-3 gap-5">
+
+                      <!-- Resources -->
+
+                      <div class="server-resource-item">
+                        <div class="server-resource-header">
+                          <div class="server-resource-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-16.5 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" />
+                            </svg>
+                          </div>
+                          <div class="server-resource-label">CPU</div>
+                        </div>
+                        <div class="server-resource-value"><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu/100 %></div>
+                      </div>
+
+                      <div class="server-resource-item">
+                        <div class="server-resource-header">
+                          <div class="server-resource-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                            </svg>
+                          </div>
+                          <div class="server-resource-label">Memory</div>
+                        </div>
+                        <div class="server-resource-value"><%= (pterodactyl.relationships.servers.data[i].attributes.limits.memory/1024).toFixed(2) %> GiB</div>
+                      </div>
+
+                      <div class="server-resource-item">
+                        <div class="server-resource-header">
+                          <div class="server-resource-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                            </svg>
+                          </div>
+                          <div class="server-resource-label">Storage</div>
+                        </div>
+                        <div class="server-resource-value"><%= (pterodactyl.relationships.servers.data[i].attributes.limits.disk/1024).toFixed(2) %> GiB</div>
+                      </div>
+
+                  </div>
+
+                 </div>
+
+                  <% } %>
+
+                </dl>
+
+              <% } %>
+
+              <% if (pterodactyl.relationships.servers.data.length == 1) { %>
+
+                  <div class="px-4 py-5 rounded-lg overflow-hidden sm:p-6 justify-center" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.22);">
+
+                      <div class="flex flex-col items-center justify-center h-full">
+
+                          <p class="text-center text-1xl font-medium" style="color: #9ca3af;">Nothing here yet...</p>                            
+
+                      </div>
+
+                     </div>
+
+              <% } %>
+
+          <!-- /End replace -->
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+
+</body>

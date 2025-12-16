@@ -1,0 +1,157 @@
+<head>
+    <title><%= settings.name %> - Users Management</title>
+    <link rel="icon" type="image/png" href="<%= settings.logo.url %>">
+    <link rel="stylesheet" href="../assets/tailwind.css">
+    <link rel="stylesheet" href="../assets/css/modern-theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+
+    <% if (settings.music == true) { %>
+      <!-- Music Player -->
+      <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+    <div class="elfsight-app-9c8f4667-f5ce-46b9-99e2-f32095e11518" data-elfsight-app-lazy></div>
+      <% } %>
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body style="font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 55%), radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 55%), radial-gradient(circle at bottom, rgba(15, 23, 42, 0.95), #020617 70%);">
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('page-loaded');
+  });
+</script>
+  <%- include('components/admin_navigation') %>
+  <div class="md:pl-52 flex flex-col flex-1 min-h-screen">
+    <main class="flex-1">
+      <div class="py-6">
+        <div class="max-w-7xl pt-8 mx-auto px-4 sm:px-6 md:px-8">
+          <div class="lg:flex lg:items-center lg:justify-between mb-8">
+            <div class="min-w-0 flex-1">
+              <h2 class="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight">Users Management</h2>
+              <p class="text-md font-medium text-gray-400">Search and manage all registered users.</p>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <div class="bg-card rounded-xl p-6 shadow-lg border border-border">
+              <div class="flex items-center space-x-4 mb-4">
+                <input type="text" id="searchInput" placeholder="Search by Discord ID or Username..." 
+                  class="flex-1 px-4 py-2 bg-dark-700 border border-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary">
+                <button onclick="searchUser()" 
+                  class="px-6 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="userResults" class="space-y-4">
+            <!-- User results will be displayed here -->
+          </div>
+
+          <div id="userInfo" class="hidden bg-card rounded-xl p-6 shadow-lg border border-border mt-6">
+            <h3 class="text-xl font-bold text-white mb-4">User Information</h3>
+            <div id="userDetails" class="space-y-3">
+              <!-- User details will be displayed here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    async function searchUser() {
+      const searchValue = document.getElementById('searchInput').value.trim();
+      if (!searchValue) {
+        alert('Please enter a Discord ID or Username');
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/admin/users/search?id=${encodeURIComponent(searchValue)}`);
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+          displayUserInfo(data.user);
+        } else {
+          document.getElementById('userResults').innerHTML = 
+            `<div class="bg-red-500/20 border border-red-500 rounded-lg p-4 text-red-400">${data.message || 'User not found'}</div>`;
+          document.getElementById('userInfo').classList.add('hidden');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('userResults').innerHTML = 
+          `<div class="bg-red-500/20 border border-red-500 rounded-lg p-4 text-red-400">Error searching for user</div>`;
+      }
+    }
+
+    function displayUserInfo(user) {
+      const userInfoDiv = document.getElementById('userInfo');
+      const userDetailsDiv = document.getElementById('userDetails');
+      
+      userDetailsDiv.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Discord ID</p>
+            <p class="text-white font-semibold">${user.id}</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Username</p>
+            <p class="text-white font-semibold">${user.username || 'N/A'}</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Coins</p>
+            <p class="text-white font-semibold">${user.coins || 0}</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Package</p>
+            <p class="text-white font-semibold">${user.package || 'default'}</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Extra RAM</p>
+            <p class="text-white font-semibold">${user.extra?.ram || 0} MB</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Extra Disk</p>
+            <p class="text-white font-semibold">${user.extra?.disk || 0} MB</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Extra CPU</p>
+            <p class="text-white font-semibold">${user.extra?.cpu || 0}%</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-gray-400 text-sm mb-1">Extra Servers</p>
+            <p class="text-white font-semibold">${user.extra?.servers || 0}</p>
+          </div>
+        </div>
+        <div class="mt-4 flex space-x-3">
+          <a href="/admin/coins?id=${user.id}" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
+            Manage Coins
+          </a>
+          <a href="/admin/resources?id=${user.id}" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
+            Manage Resources
+          </a>
+          <a href="/admin/plans?id=${user.id}" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
+            Manage Plan
+          </a>
+        </div>
+      `;
+      
+      userInfoDiv.classList.remove('hidden');
+      document.getElementById('userResults').innerHTML = '';
+    }
+
+    // Allow Enter key to trigger search
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        searchUser();
+      }
+    });
+  </script>
+</body>
+</html>
+
