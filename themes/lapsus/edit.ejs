@@ -68,42 +68,7 @@
     <% } %>
 <div>
 <!-- The Modal -->
-<% if (req.query.news) { %>
-<div id="myModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-        <h2 class="text-xl font-bold mb-4" style="color: #e5e7eb; position: relative; z-index: 1;">
-            <span class="inline-block whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-cyan-500 px-3 py-1 text-center align-baseline text-sm font-bold leading-none text-white">20/04/2023</span> <span class="inline-block whitespace-nowrap rounded-md px-3 py-1 text-center align-baseline text-sm leading-none ml-2" style="background: rgba(15, 23, 42, 0.8); color: #9ca3af;">News</span>
-        </h2>
-        <h2 class="text-xl font-bold mb-2" style="color: #e5e7eb; position: relative; z-index: 1;">
-          Добро пожаловать в Lapsus Client!
-        </h2>
-        <p class="font-medium mb-2" style="color: #9ca3af; position: relative; z-index: 1;">Что здесь можно делать?</p>
-        <ul class="list-disc ml-5 mb-8" style="color: #9ca3af; position: relative; z-index: 1;">
-          <li>Создавать, редактировать и удалять серверы</li>
-          <li>Зарабатывать и тратить монеты на ресурсы</li>
-          <li>Сбрасывать пароль и управлять аккаунтом</li>
-          <li>И многое другое!</li>
-        </ul>
-        <div class="mt-1 grid grid-cols-2 gap-3">
-            <div>
-                <% if (req.query.loggedin) { %>
-                <a href="../dashboard?loggedin=true"
-                    class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
-                    Закрыть
-                </a>
-                <% } else { %>
-                <a href="../dashboard"
-                    class="close w-full inline-flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium cursor-default btn-hover btn-active" style="border-color: rgba(148, 163, 184, 0.22); background: rgba(15, 23, 42, 0.8); color: #9ca3af; position: relative; z-index: 1;">
-                    Закрыть
-                </a>
-                <% } %>
-            </div>
-
-        </div>
-    </div>
-</div>
 <% } %>
     <%- include('components/navigation') %>
     <div class="md:pl-52 flex flex-col flex-1 min-h-screen">

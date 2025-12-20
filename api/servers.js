@@ -42,7 +42,7 @@ module.exports.load = async function (app, db) {
           })
         if (!cacheaccount) {
           cb()
-          return res.send('Lapsus Client was unnable to find an account on the configured panel, try relogging')
+          return res.send('ONEGBIT Client was unnable to find an account on the configured panel, try relogging')
         }
         req.session.pterodactyl = cacheaccount.attributes;
 

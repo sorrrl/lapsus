@@ -17,7 +17,7 @@ function setupLapsus() {
     output: process.stdout
   });
 
-  console.log(chalk.green('\nWelcome to Lapsus Client Setup\n'));
+  console.log(chalk.green('\nWelcome to ONEGBIT Client Setup\n'));
   console.log(chalk.yellow('This will configure your settings.json file\n'));
 
   // Load current settings
@@ -48,9 +48,9 @@ function setupLapsus() {
   const askQuestions = async () => {
     const questions = [
       {
-        question: chalk.blue('Enter the host name (e.g., "Lapsus Client"): '),
+        question: chalk.blue('Enter the host name (e.g., "ONEGBIT Client"): '),
         key: 'name',
-        default: 'Lapsus Client'
+        default: 'ONEGBIT Client'
       },
       {
         question: chalk.blue('Enter Pterodactyl domain (e.g., "https://panel.example.com"): '),
