@@ -38,44 +38,38 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
 }
 %>
 <style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
     /* The Modal (background) */
     .modal {
         position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
+        z-index: 50;
         left: 0;
         top: 0;
         width: 100%;
-        /* Full width */
         height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
         background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        transition: 0.5s;
+        transition: 0.3s;
     }
 
-    /* Modal Content */
+    /* Modal Content (responsive) */
     .modal-content {
         background-color: #fefefe;
-        margin: auto;
-        padding: 40px;
-        width: 30%;
-        border-radius: 16px;
-        margin-top: 12%;
-        transition: 0.5s
+        width: 100%;
+        max-width: 640px;
+        padding: 1.25rem;
+        border-radius: 12px;
+        margin: 0 1rem;
+        transition: 0.3s;
+        box-sizing: border-box;
+    }
+
+    @media (min-width: 768px) {
+      .modal-content { padding: 2rem; border-radius: 16px; }
     }
 
     .close:hover,
@@ -83,7 +77,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
         color: #000;
         text-decoration: none;
         cursor: pointer;
-        transition: 0.5s
+        transition: 0.3s;
     }
 </style>
 <% if (req.query.success) { %>
@@ -183,13 +177,13 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
             <div class="card">
               <div class="card-body">
                   <label for="ram">Discord ID:</label>
-                  <input type="text" class="focus:border-gray-400 focus:ring-gray-400 transition ease-in-out delay-100 group relative border border-gray-300 flex w-1/4 justify-center form-control rounded-md" id="dc" placeholder="00000000000000000">
+                  <input type="text" class="focus:border-gray-400 focus:ring-gray-400 transition ease-in-out delay-100 group relative border border-gray-300 flex form-control rounded-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4" id="dc" placeholder="00000000000000000">
                   <br>
                   <label for="disk">Amount:</label>
-                  <input type="text" class="focus:border-gray-400  focus:ring-gray-400 transition ease-in-out delay-100 group relative border border-gray-300 flex w-1/4 justify-center form-control rounded-md" id="amount" placeholder="<%= coins %>">
+                  <input type="text" class="focus:border-gray-400  focus:ring-gray-400 transition ease-in-out delay-100 group relative border border-gray-300 flex form-control rounded-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4" id="amount" placeholder="<%= coins %>">
                   <br>
                   
-                  <button onclick="submitForm()" class="transition delay-100 group relative  justify-center rounded-md border border-transparent bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none">Transfer</button>
+                  <button onclick="submitForm()" class="transition delay-100 group relative w-full sm:w-auto justify-center rounded-md border border-transparent bg-black-400 py-2 px-4 text-sm font-medium text-white hover:bg-gray-500 focus:outline-none">Transfer</button>
               <br></div>
               <script>
                   async function submitForm() {

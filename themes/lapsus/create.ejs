@@ -171,6 +171,7 @@
         bottom: calc(100% + 0.5rem);
         left: 0;
         right: 0;
+        max-width: 100%;
         z-index: 9999;
         background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.98));
         border: 2px solid rgba(79, 70, 229, 0.4);
@@ -323,6 +324,31 @@
       }
       
       [x-cloak] { display: none !important; }
+
+      /* Media Queries */
+      @media (max-width: 640px) {
+        .futuristic-dropdown-menu {
+          bottom: auto;
+          top: calc(100% + 0.5rem);
+          transform-origin: top center;
+        }
+
+        .resources-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .deploy-submit-btn { width: 100%; justify-content: center; }
+      }
+
+      @media (min-width: 641px) {
+        .resources-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+        }
+      }
     </style>
 </head>
 <body style="font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 55%), radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 55%), radial-gradient(circle at bottom, rgba(15, 23, 42, 0.95), #020617 70%);">
@@ -471,7 +497,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
                   <label for="egg" class="form-label">
                     <div class="form-label-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3H10" />
                       </svg>
                     </div>
                     <span>Софт</span>
@@ -602,7 +628,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
                       </div>
                       <span>ОЗУ (GiB)</span>
                     </label>
-                    <input type="text" class="form-control form-control-enhanced" id="ram" placeholder="<%= (packages ? packages.ram : 0)/1024 + extraresources.ram/1024 - ram/1024 %>" value="<%= (packages ? packages.ram : 0)/1024 + extraresources.ram/1024 - ram/1024 %>">
+                    <input type="text" class="form-control form-control-enhanced w-full sm:w-1/2 md:w-1/3" id="ram" placeholder="<%= (packages ? packages.ram : 0)/1024 + extraresources.ram/1024 - ram/1024 %>" value="<%= (packages ? packages.ram : 0)/1024 + extraresources.ram/1024 - ram/1024 %>">
                   </div>
 
                   <!-- Disk Field -->
@@ -615,7 +641,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
                       </div>
                       <span>Диск (GiB)</span>
                     </label>
-                    <input type="text" class="form-control form-control-enhanced" id="disk" placeholder="<%= (packages ? packages.disk : 0)/1024 + extraresources.disk/1024 - disk/1024 %>" value="<%= (packages ? packages.disk : 0)/1024 + extraresources.disk/1024 - disk/1024 %>">
+                    <input type="text" class="form-control form-control-enhanced w-full sm:w-1/2 md:w-1/3" id="disk" placeholder="<%= (packages ? packages.disk : 0)/1024 + extraresources.disk/1024 - disk/1024 %>" value="<%= (packages ? packages.disk : 0)/1024 + extraresources.disk/1024 - disk/1024 %>">
                   </div>
 
                   <!-- CPU Field -->
@@ -628,7 +654,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
                       </div>
                       <span>CPU (Ядра)</span>
                     </label>
-                    <input type="text" class="form-control form-control-enhanced" id="cpu" placeholder="<%= (packages ? packages.cpu : 0)/100 + extraresources.cpu/100 - cpu/100 %>" value="<%= (packages ? packages.cpu : 0)/100 + extraresources.cpu/100 - cpu/100 %>">
+                    <input type="text" class="form-control form-control-enhanced w-full sm:w-1/2 md:w-1/3" id="cpu" placeholder="<%= (packages ? packages.cpu : 0)/100 + extraresources.cpu/100 - cpu/100 %>" value="<%= (packages ? packages.cpu : 0)/100 + extraresources.cpu/100 - cpu/100 %>">
                   </div>
                 </div>
 
